@@ -22,4 +22,4 @@ Advanced user analytics and knowledge usage insights.
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Contact
-For any inquiries or feedback, please reach out to [Aaron.ArdoinIII@OutLook.com].
+For any inquiries or feedback, please reach out to Aaron.ArdoinIII@OutLook.com.
