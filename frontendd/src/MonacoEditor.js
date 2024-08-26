@@ -1,30 +1,22 @@
 // MonacoEditor.js
 
-import React from 'react';
+import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
+import React, { useRef, useEffect } from 'react';
 
-// MonacoEditor Component: Renders the Monaco Editor for code editing
-class MonacoEditor extends React.Component {
-    componentDidMount() {
-        window.require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.0/min/vs' }});
+const MonacoEditor = () => {
+  const containerRef = useRef(null);
 
-        window.require(['vs/editor/editor.main'], () => {
-            this.editor = monaco.editor.create(this.refs.editor, {
-                value: this.props.code || '',
-                language: this.props.language || 'javascript',
-                theme: 'vs-dark',
-                automaticLayout: true
-            });
-        });
+  useEffect(() => {
+    if (containerRef.current) {
+      monaco.editor.create(containerRef.current, {
+        value: '// Your code here',
+        language: 'javascript',
+        theme: 'vs-dark', // Optional: Set a theme
+      });
     }
+  }, []);
 
-    render() {
-        return React.createElement('div', {
-            ref: 'editor',
-            style: { height: '400px', border: '1px solid #ccc' }
-        });
-    }
-}
+  return <div ref={containerRef} style={{ height: '500px', width: '80%' }} />;
+};
 
-// Export the component
 export default MonacoEditor;
-
