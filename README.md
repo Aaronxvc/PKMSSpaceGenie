@@ -1,6 +1,6 @@
 # GEN-I-E
 
-GEN-I-E is a powerful web-based Personal Knowledge Management System (PKMS) designed to help users effectively manage, organize, and retrieve their personal and professional knowledge. The system supports a variety of data types, including text, code snippets, PDFs, images, and videos, with dynamic search functionality to quickly find and access stored content.
+GEN-I-E is a web-based Personal Knowledge Management System (PKMS) designed to help users manage various types of data, including code snippets, research papers, PDFs, images, and videos. The system is built using React for the frontend, Python with Flask for the backend, and T-SQL for database management. The application also features a responsive design using Bootstrap.
 
 ## Features
 - **User Authentication**: Secure login and registration system for a personalized experience.
