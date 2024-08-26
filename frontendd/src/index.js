@@ -1,7 +1,11 @@
-// index.js //
-import MonacoEditor from './MonacoEditor.js'; // Import MonacoEditor
+// index.js
 
-// Step 1: Create a simple SearchBar component in React
+import React from 'react';
+import ReactDOM from 'react-dom';
+import MonacoEditor from './MonacoEditor.js'; // Import MonacoEditor
+import KnowledgeHolderList from './KnowledgeHolderList.js'; // Import KnowledgeHolderList
+
+// SearchBar Component: Allows users to search Knowledge Holders
 function SearchBar(props) {
     return React.createElement('input', {
         type: 'text',
@@ -10,7 +14,7 @@ function SearchBar(props) {
     });
 }
 
-// Step 2: Create a ResultsContainer component to display the search results
+// ResultsContainer Component: Displays search results (not used here but can be useful for other components)
 function ResultsContainer(props) {
     return React.createElement('div', null, 
         props.results.map((result, index) => {
@@ -19,7 +23,7 @@ function ResultsContainer(props) {
     );
 }
 
-// Step 3: Create components for "Create Knowledge Holder" and "View Knowledge Holders"
+// CreateKnowledgeHolder Component: Page for creating new Knowledge Holders
 function CreateKnowledgeHolder() {
     return React.createElement('div', { className: 'container' },
         React.createElement('h2', null, 'Create Knowledge Holder'),
@@ -28,11 +32,47 @@ function CreateKnowledgeHolder() {
     );
 }
 
+// ViewKnowledgeHolders Component: Displays all Knowledge Holders with search and filtering
 function ViewKnowledgeHolders() {
-    return React.createElement('div', null, 'View Knowledge Holders Page');
+    const [holders, setHolders] = React.useState([
+        { title: 'Document 1', description: 'This is the first document.' },
+        { title: 'Code Snippet 1', description: 'A useful code snippet.' },
+        { title: 'Research Paper 3', description: 'Research on AI.' }
+    ]);
+
+    // Function to handle deletion of a Knowledge Holder
+    const handleDelete = (index) => {
+        const newHolders = holders.filter((_, i) => i !== index);
+        setHolders(newHolders);
+    };
+
+    // Function to handle editing of a Knowledge Holder
+    const handleEdit = (index) => {
+        // Redirect to edit page or show edit form (this can be refined based on your routing setup)
+        alert('Edit functionality to be implemented');
+    };
+
+    return React.createElement('div', { className: 'container' },
+        React.createElement('h2', null, 'View Knowledge Holders'),
+        React.createElement(SearchBar, {
+            onSearchChange: (event) => {
+                const query = event.target.value.toLowerCase();
+                setHolders(prevHolders =>
+                    prevHolders.filter(holder =>
+                        holder.title.toLowerCase().includes(query)
+                    )
+                );
+            }
+        }),
+        React.createElement(KnowledgeHolderList, {
+            holders: holders,
+            onDelete: handleDelete,
+            onEdit: handleEdit
+        })
+    );
 }
 
-// Step 4: Create the main App component to manage state and render the SearchBar, ResultsContainer, and navigation
+// Main App Component: Manages state and navigation
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -45,6 +85,7 @@ class App extends React.Component {
         this.handleNavigation = this.handleNavigation.bind(this);
     }
 
+    // Handles search input changes
     handleSearchChange(event) {
         const query = event.target.value;
         this.setState({
@@ -53,12 +94,13 @@ class App extends React.Component {
         });
     }
 
+    // Simulates search results (replace with API call if needed)
     getResults(query) {
-        // Simulate search results; replace with API Call from Backend
         const sampleData = ['Document 1', 'Document 2', 'Code Snippet 1', 'Research Paper 3'];
         return sampleData.filter(item => item.toLowerCase().includes(query.toLowerCase()));
     }
 
+    // Handles page navigation
     handleNavigation(page) {
         this.setState({ currentPage: page });
     }
@@ -66,6 +108,7 @@ class App extends React.Component {
     render() {
         let pageComponent;
 
+        // Renders the appropriate page based on currentPage state
         switch(this.state.currentPage) {
             case 'create':
                 pageComponent = React.createElement(CreateKnowledgeHolder);
@@ -90,6 +133,8 @@ class App extends React.Component {
     }
 }
 
-// Step 5: Render the App component into the root div
+// Render the App component into the root div
 ReactDOM.render(React.createElement(App), document.getElementById('root'));
+
+
 

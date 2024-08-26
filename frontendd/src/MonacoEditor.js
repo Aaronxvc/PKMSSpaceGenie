@@ -1,4 +1,8 @@
 // MonacoEditor.js
+
+import React from 'react';
+
+// MonacoEditor Component: Renders the Monaco Editor for code editing
 class MonacoEditor extends React.Component {
     componentDidMount() {
         window.require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.0/min/vs' }});
@@ -23,3 +27,4 @@ class MonacoEditor extends React.Component {
 
 // Export the component
 export default MonacoEditor;
+
