@@ -83,6 +83,16 @@ input[type="text"] {
     margin: 5px;
 }
 
+.save-know-btn {
+    background-color: #0b669b;
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+}
 
 
 button.btn-primary {
