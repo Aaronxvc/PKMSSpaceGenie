@@ -1,6 +1,6 @@
 // MonacoEditor.js
 
-import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
+import * as monaco from 'monaco-editor';
 import React, { useRef, useEffect } from 'react';
 
 const MonacoEditor = () => {

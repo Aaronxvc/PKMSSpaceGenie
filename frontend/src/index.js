@@ -2,9 +2,12 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import header from './Header'; // Import Header component
 import MonacoEditor from './MonacoEditor.js'; // Import MonacoEditor
 import KnowledgeHolderList from './KnowledgeHolderList.js'; // Import KnowledgeHolderList
 import 'monaco-editor/min/vs/editor/editor.main.css';
+import './styles.css';
+
 
 // SearchBar Component: Allows users to search Knowledge Holders
 function SearchBar(props) {
