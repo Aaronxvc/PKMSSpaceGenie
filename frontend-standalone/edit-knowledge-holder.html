@@ -1,10 +1,10 @@
-<!--create-knowledge-holder.html-->
+<!-- edit-knowledge-holder.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Knowledge Holder - GEN-I-E</title>
+    <title>Edit Knowledge Holder - GEN-I-E</title>
     <link rel="stylesheet" href="style.css"> <!-- Link to the external CSS file -->
 </head>
 <body>
@@ -15,15 +15,16 @@
     <nav>
         <!-- Navigation links to other pages -->
         <a href="index.html">Home</a>
+        <a href="create-knowledge-holder.html">Create Knowledge Holder</a>
         <a href="view-knowledge-holders.html">View Knowledge Holders</a>
     </nav>
 
     <div class="container">
-        <h2>Create Knowledge Holder</h2>
+        <h2>Edit Knowledge Holder</h2>
         <!-- Monaco Editor container for code editing -->
         <div id="editor" style="height: 500px; border: 1px solid #ccc;"></div>
-        <!-- Button to save the knowledge holder -->
-        <button class="btn btn-primary" onclick="saveKnowledgeHolder()">Save Knowledge Holder</button>
+        <!-- Button to save changes to the knowledge holder -->
+        <button class="btn btn-primary" onclick="saveChanges()">Save Changes</button>
     </div>
 
     <!-- Include Monaco Editor via CDN -->
@@ -35,17 +36,26 @@
         require(['vs/editor/editor.main'], function() {
             // Initialize the Monaco Editor with settings
             const editor = monaco.editor.create(document.getElementById('editor'), {
-                value: '// Start typing your code here...',
+                value: '// Edit your code here...',
                 language: 'javascript',
                 theme: 'vs-dark'
             });
 
-            // Function to save the knowledge holder
-            window.saveKnowledgeHolder = function() {
+            // Function to save changes to the knowledge holder
+            window.saveChanges = function() {
                 const code = editor.getValue(); // Get the code from the editor
-                alert('Code saved: ' + code); // Display an alert with the saved code
+                alert('Changes saved: ' + code); // Display an alert with the saved code
                 // Here you would typically send the code to a server or process it further
             };
+
+            // Load the existing knowledge holder data based on query parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = urlParams.get('id');
+            if (id) {
+                // Fetch the data based on id and set the editor's content
+                // This is a placeholder; replace with actual data fetching logic
+                editor.setValue('// Code for knowledge holder ID ' + id);
+            }
         });
     </script>
 </body>
