@@ -1,4 +1,4 @@
-/* styles.css */
+/* styles.css for React componets */
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
@@ -11,6 +11,7 @@ nav {
   background-color: #007bff;
   padding: 10px;
   text-align: center;
+  margin-top: 50px; /* Adjust margin to ensure nav is below header */
 }
 
 nav button {
@@ -114,19 +115,18 @@ button.btn-primary:hover {
 }
 
 header {
-  background-color: #000000;
-  padding: 10px; /* Adjusted padding */
-  position: absolute;
+  background-color: #0a0a0a;
+  padding: 7px 7px; /* Adjust padding for better spacing */
+  position: fixed; /* Use fixed positioning */
   top: 0;
   left: 0;
-  text-align: left; /* Align text to the left */
-  width: 100%; /* Make the header full width if needed */
+  text-align: left;
+  width: auto; /* Full width to cover the screen */
+  z-index: 1000; /* Ensure it stays above other content */
 }
 
 header h1 {
-  color: #000000; /* Change the text color to match your theme */
+  color: #ffffff; /* White text color for better contrast */
   margin: 0;
   font-size: 2em;
-  padding-left: 20px; /* Add some padding to the left */
 }
-

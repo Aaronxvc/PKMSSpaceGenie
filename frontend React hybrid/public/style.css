@@ -1,0 +1,129 @@
+/*style.css for create-knowledge-holder.html*/
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+nav {
+    background-color: #007bff;
+    padding: 10px;
+    text-align: center;
+    margin-top: 50px; /* Ensure nav is below header */
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 0 5px;
+    border-radius: 5px;
+}
+
+nav a:hover {
+    background-color: #0056b3;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    color: #007bff;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Styles for Create Knowledge Holder Page */
+.editor-container {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #fff;
+}
+
+button.btn-primary {
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Styles for View Knowledge Holders Page */
+.knowledge-holder-list {
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.knowledge-holder-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.knowledge-holder-item:last-child {
+    border-bottom: none;
+}
+
+.knowledge-holder-actions button {
+    margin-left: 10px;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.knowledge-holder-actions button:hover {
+    background-color: #0056b3;
+}
+
+.search-bar {
+    margin-bottom: 20px;
+}
+
+header {
+    background-color: #0a0a0a;
+    padding: 7px 7px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: left;
+    width: 100%; /* Full width for the header */
+    z-index: 1000;
+}
+
+h1 {
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}

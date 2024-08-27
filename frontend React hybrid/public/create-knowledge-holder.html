@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Knowledge Holder - GEN-I-E</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>GEN-I-E</h1>
+    </header>
+    
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="view-knowledge-holders.html">View Knowledge Holders</a>
+    </nav>
+
+    <div class="container">
+        <h2>Create Knowledge Holder</h2>
+        <div id="editor" style="height: 500px; border: 1px solid #ccc;"></div>
+        <button class="btn btn-primary" onclick="saveKnowledgeHolder()">Save Knowledge Holder</button>
+    </div>
+
+    <!-- Include Monaco Editor via CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.0/min/vs/loader.min.js"></script>
+    <script>
+        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.0/min/vs' }});
+        
+        require(['vs/editor/editor.main'], function() {
+            const editor = monaco.editor.create(document.getElementById('editor'), {
+                value: '// Start typing your code here...',
+                language: 'javascript',
+                theme: 'vs-dark'
+            });
+
+            window.saveKnowledgeHolder = function() {
+                const code = editor.getValue();
+                alert('Code saved: ' + code);
+                // Here you would typically send the code to a server or process it further
+            };
+        });
+    </script>
+</body>
+</html>
+

@@ -13,7 +13,7 @@ function KnowledgeHolderItem({ title, description, onDelete, onEdit }) {
     );
 }
 
-function KnowledgeHolderList({ holders, onDelete, onEdit }) {
+function KnowledgeHolderList({ holders = [], onDelete, onEdit }) { // Default holders to an empty array
     return (
         <div>
             {holders.map((holder, index) => (

@@ -1,12 +1,12 @@
 const path = require('path');
 const webpack = require('webpack');
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './index.js',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
   },
   module: {
     rules: [
@@ -24,10 +24,6 @@ module.exports = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
-      {
-        test: /\.worker\.js$/,
-        use: { loader: 'worker-loader' },
-      },
     ],
   },
   resolve: {
@@ -40,10 +36,9 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     }),
+    new MonacoWebpackPlugin({
+      languages: ['javascript', 'typescript'],
+      features: ['!codelens', '!codeAction', '!quickOutline'], // Exclude features you don't need
+    }),
   ],
-  devServer: {
-    static: path.resolve(__dirname, 'dist'),
-    historyApiFallback: true,
-  },
 };
-
