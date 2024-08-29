@@ -1,59 +1,59 @@
 // view-knowledge-holders.js
 document.addEventListener('DOMContentLoaded', () => {
-    const knowledgeHolderList = document.getElementById('knowledge-holder-list'); // Reference to the list container
+    // Reference to the container where knowledge holders will be listed
+    const knowledgeHolderList = document.getElementById('knowledge-holder-list');
 
+    // Fetch the data from the backend API when the page loads
+    let sampleHolders = []; // Initialize an empty array to store the fetched knowledge holders
+    fetch('http://127.0.0.1:5000/api/data') // Replace with your backend API endpoint
+        .then(response => response.json()) // Parse the response as JSON
+        .then(data => {
+            sampleHolders = data.message.split(','); // Store the fetched data in the sampleHolders array
+            populateKnowledgeHolderList(); // Call the function to display the fetched data
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error); // Log any errors that occur during the fetch
+        });
 
-   // Example of where to integrate backend API call for fetching data
-    // Fetch the data from the backend API
-    // fetch('YOUR_API_ENDPOINT')
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         // Set sampleData to the fetched data
-    //         sampleData = data;
-    //     });
+    // Function to populate the list of knowledge holders
+    function populateKnowledgeHolderList() {
+        sampleHolders.forEach(holder => {
+            const div = document.createElement('div'); // Create a new div element for each holder
+            div.textContent = holder; // Set the text content of the div to the holder's name
 
-    // Sample data for search functionality (replace with data from the API)
+            // Create an Edit button for each holder
+            const editButton = document.createElement('button');
+            editButton.textContent = 'Edit'; // Set the text of the button to 'Edit'
+            editButton.className = 'edit-button'; // Assign a class to the button for styling
+            editButton.onclick = () => editKnowledgeHolder(holder); // Attach a click event to edit the knowledge holder
 
+            // Create a Delete button for each holder
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete'; // Set the text of the button to 'Delete'
+            deleteButton.className = 'delete-button'; // Assign a class to the button for styling
+            deleteButton.onclick = () => deleteKnowledgeHolder(holder); // Attach a click event to delete the knowledge holder
 
-    // Sample knowledge holders
-    const sampleHolders = [
-        'Knowledge Holder 1',
-        'Knowledge Holder 2',
-        'Knowledge Holder 3',
-    ];
+            // Append the buttons to the div
+            div.appendChild(editButton);
+            div.appendChild(deleteButton);
 
-    // Populate the knowledge holder list
-    sampleHolders.forEach(holder => {
-        const div = document.createElement('div');
-        div.textContent = holder;
-
-        // Add Edit and Delete buttons
-        const editButton = document.createElement('button');
-        editButton.textContent = 'Edit';
-        editButton.className = 'edit-button';
-        editButton.onclick = () => editKnowledgeHolder(holder);
-
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Delete';
-        deleteButton.className = 'delete-button';
-        deleteButton.onclick = () => deleteKnowledgeHolder(holder);
-
-        div.appendChild(editButton);
-        div.appendChild(deleteButton);
-        knowledgeHolderList.appendChild(div);
-    });
+            // Append the div to the knowledge holder list container
+            knowledgeHolderList.appendChild(div);
+        });
+    }
 
     // Function to handle editing a knowledge holder
     function editKnowledgeHolder(holder) {
-        // Redirect to the edit page with the holder ID or name as a query parameter
+        // Redirect to the edit page with the holder's name as a query parameter
         window.location.href = `edit-knowledge-holder.html?name=${encodeURIComponent(holder)}`;
     }
 
     // Function to handle deleting a knowledge holder
     function deleteKnowledgeHolder(holder) {
+        // Confirm with the user before deleting
         if (confirm(`Are you sure you want to delete ${holder}?`)) {
-            // Handle the delete operation here
-            alert(`${holder} deleted.`); // You would typically make an API call here
+            // Handle the delete operation here (e.g., make an API call to delete the holder)
+            alert(`${holder} deleted.`); // Show a message confirming deletion
         }
     }
 });
