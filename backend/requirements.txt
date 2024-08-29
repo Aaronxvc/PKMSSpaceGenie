@@ -1,2 +1,0 @@
-Flask
-# Add other dependencies as needed, like Flask-SQLAlchemy if using a database
