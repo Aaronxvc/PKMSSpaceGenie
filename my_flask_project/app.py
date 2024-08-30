@@ -51,7 +51,4 @@ def insert_data():
 if __name__ == '__main__':
     app.run(debug=True)
 
-server = 'myserver.database.windows.net'
-database = 'mydatabase'
-username = ''
-password = 'mypassword'
+
