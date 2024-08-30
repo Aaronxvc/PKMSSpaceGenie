@@ -23,3 +23,21 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Contact
 For any inquiries or feedback, please reach out to Aaron.ArdoinIII@OutLook.com.
+
+# Flask + SQL Server with Docker
+
+This project demonstrates how to set up a Flask application connected to a Microsoft SQL Server database running in a Docker container.
+
+## Prerequisites
+
+- [Docker](https://www.docker.com/products/docker-desktop)
+- [Python](https://www.python.org/downloads/)
+- [SQL Server Management Studio (SSMS)](https://aka.ms/ssmsfullsetup) (optional, for managing the database)
+
+## Step 1: Set Up the Project
+
+1. **Clone the Repository:**
+
+   ```bash
+   git clone https://github.com/yourusername/flask-sql-docker.git
+   cd flask-sql-docker
